@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobil Uygulama Geliştirme</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    /* Arkaplan video stili */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    #overlay {
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 20px;
+      height: 100%;
+      overflow: auto;
+    }
+    .hamburger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      z-index: 1001; /* Menü düğmesi her şeyin üstünde */
+    }
+    .hamburger div {
+      background-color: #fff;
+      height: 4px;
+      width: 100%;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+      background-color: #f8f9fa;
+      padding: 1rem;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      border: 1px solid #ddd;
+      z-index: 1000; /* Menü üstte */
+    }
+    .menu.active {
+      display: flex;
+    }
+    /* Logo */
+    .logo {
+      height: 40px;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    /* Menü ve Karanlık Mod */
+    .menu-container {
+      display: flex;
+      align-items: center;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 8px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+      height: auto;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card .btn-primary {
+      background-color: #007BFF;
+      color: white;
+    }
+    .card .btn-primary:hover {
+      background-color: #0056b3;
+    }
+    .blog-card {
+      padding: 5px; /* Daha kompakt tasarım */
+      font-size: 0.85rem; /* Blog kartları için daha küçük yazı */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #444;
+    }
+    @media (max-width: 768px) {
+      .card {
+        padding: 5px; /* Daha kompakt görünüm için */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Arkaplan Video -->
+  <video id="background-video" autoplay loop muted>
+    <source src="he3d5e122_5129556.mov" type="video/mp4">
+    Tarayıcınız videoyu desteklemiyor.
+  </video>
+  <div id="overlay">
+  </div>
+    <header>
+      <div class="header-left">
+        <div class="menu-container">
+          <div class="hamburger" id="hamburger">
+           <div></div>
+           <div></div>
+           <div></div>
+          </div>
+          <button id="dark-mode-toggle">🌙</button>
+        </div>
+          <nav>
+            <ul id="menu" class="menu">
+               <li><a href="index.html">Anasayfa</a></li>
+               <li><a href="hakkinda.html">Hakkında</a></li>
+               <li><a href="blog.html">Blog</a></li>
+               <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+          </nav>
+      </div>
+      <div class="header-right">
+        <img src="logo.png" alt="Mobil Uygulama Geliştirme Logo" class="logo">
+      </div>
+     </header>
+     <!-- Pop-up Tetikleyici -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Pop-up Aç
+    </button>
+    <!-- Pop-up Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Bilgi Girin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="modalForm">
+              <div class="mb-3">
+                <label for="username" class="form-label">Kullanıcı Adı</label>
+                <input type="text" class="form-control" id="username" placeholder="Kullanıcı adınızı girin">
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Mesaj</label>
+                <textarea class="form-control" id="message" rows="3" placeholder="Mesajınızı yazın"></textarea>
+              </div>
+            </form>    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            <button type="button" class="btn btn-primary">Kaydet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pop-up Modal Sonu -->
+     <section id="anasayfa" class="text-center">
+       <h2 class="mb-4">Mobil Uygulama Geliştirmeye Hoş Geldiniz</h2>
+       <p>Bu sitede mobil uygulama geliştirme ile ilgili araçları, rehberleri ve ipuçlarını bulabilirsiniz.</p>
+     </section>
+     </div>
+       <main>
+       <section id="frameworks" class="mt-0">
+         <h2 class="text-center mb-4">En Popüler Mobil Uygulama Çerçeveleri</h2>
+         <div class="row">
+           <div class="col-md-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Flutter</h5>
+                <p class="card-text">Google tarafından geliştirilen modern UI framework.Flutter, hızlı bir şekilde güzel ve yerel görünümlü uygulamalar oluşturmanıza olanak tanır. Tek bir kod tabanı ile hem Android hem de iOS için uygulamalar geliştirebilirsiniz. Flutter'ın "Hot Reload" özelliği, geliştiricilerin koddaki değişiklikleri anında görmelerini sağlar. Ayrıca, geniş widget kitaplığı ve güçlü topluluk desteği sayesinde her türlü tasarımı uygulamak oldukça kolaydır.</p>
+                <a href="https://flutter.dev" class="btn btn-primary">Daha Fazla</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">React Native</h5>
+                <p class="card-text">Facebook tarafından geliştirilen mobil uygulama framework.React Native, JavaScript kullanarak çapraz platform uygulamalar oluşturmanızı sağlar. React Native, performans açısından yerel kodlara yakın bir deneyim sunar ve "Live Reload" özelliği ile kod değişikliklerini anında test etmenize olanak tanır. Geniş topluluk desteği, geniş eklenti kütüphanesi ve kolay entegrasyon özellikleri ile React Native, özellikle hızlı prototipleme için tercih edilir.</p>
+                <a href="https://reactnative.dev" class="btn btn-primary">Daha Fazla</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Swift</h5>
+                <p class="card-text">Apple'ın güçlü programlama dili.Swift ile iOS ve macOS platformlarında performanslı ve güvenli uygulamalar geliştirebilirsiniz.</p>
+                <a href="https://developer.apple.com/swift/" class="btn btn-primary">Daha Fazla</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="araclar" class="mt-5">
+        <h2 class="text-center mb-4">Araçlar ve Teknolojiler</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Xcode</h5>
+                <p class="card-text">Apple'ın iOS ve macOS uygulamaları geliştirmek için sunduğu IDE. Xcode, Swift ve Objective-C dilleriyle uygulama geliştirmek için kapsamlı bir araç seti sunar. Ayrıca, kullanıcı dostu arayüz tasarım araçları, hata ayıklama özellikleri ve App Store'a doğrudan entegrasyonuyla öne çıkar. iOS ekosisteminde çalışan profesyoneller için vazgeçilmezdir.</p>
+                <a href="https://developer.apple.com/xcode/" class="btn btn-primary">Daha Fazla</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Android Studio</h5>
+                <p class="card-text">Android geliştirme için güçlü bir IDE.Android Studio, Java ve Kotlin programlama dillerini destekler ve gelişmiş kod tamamlama, gerçek zamanlı hata ayıklama ve emülatör özellikleri sunar. Material Design yönergelerine uygun arayüzler oluşturmanıza yardımcı olan araçlarla donatılmıştır ve Android cihazlarda yüksek performanslı uygulamalar geliştirmek için idealdir.</p>
+                <a href="https://developer.android.com/studio" class="btn btn-primary">Daha Fazla</a>
+                <div class="tooltip">
+                  Tooltipli Metin
+                  <span class="tooltip-text">Bu bir tooltip örneğidir!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+      <section id="kullanici-yorumlari" class="mt-5">
+        <h2 class="text-center mb-4">Kullanıcı Yorumları</h2>
+        <div id="user-reviews" class="row">
+          <div class="col-md-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Ayşe</h5>
+                <p class="card-text">"Harika bir rehber oldu!"</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Mehmet</h5>
+                <p class="card-text">"Oldukça bilgilendirici."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog-yazilari" class="mt-5">
+        <h2 class="text-center mb-4">Blog Yazıları</h2>
+        <div id="blog-posts" class="row">
+          <div class="col-md-4">
+            <div class="card shadow-sm blog-card">
+              <div class="card-body">
+                <h5 class="card-title">Mobil Geliştirmenin Geleceği</h5>
+                <p class="card-text">Mobil dünyadaki yenilikler ve trendler.</p>
+                <a href="blog.html?post=1" class="btn btn-primary">Devamını Oku</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-sm blog-card">
+              <div class="card-body">
+                <h5 class="card-title">Performans İpuçları</h5>
+                <p class="card-text">Uygulamalarınızı nasıl hızlandırabilirsiniz?</p>
+                <a href="blog.html?post=2" class="btn btn-primary">Devamını Oku</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-sm blog-card">
+              <div class="card-body">
+                <h5 class="card-title">Kariyer Tavsiyeleri</h5>
+                <p class="card-text">Mobil geliştirme alanında nasıl başarılı olabilirsiniz?</p>
+                <a href="blog.html?post=3" class="btn btn-primary">Devamını Oku</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>  
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+      <p>© 2024 Mobil Uygulama Geliştirme. Tüm Hakları Saklıdır.</p>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.getElementById("hamburger");
+      const menu = document.getElementById("menu");
+      const darkModeToggle = document.getElementById("dark-mode-toggle");
+      const body = document.body;
+      const slides = document.querySelector('.slides');
+      
+      if (slides) {
+         let index = 0;
+         function nextSlide() {
+            index++;
+         if (index >= slides.children.length) {
+           index = 0;
+         }
+        slides.style.transform = `translateX(-${index * 100}%)`;
+      }
+       setInterval(nextSlide, 3000); // Her 3 saniyede bir kaydırır
+      } 
+      // Hamburger menü tıklama olayı
+      hamburger.addEventListener("click", function () {
+        menu.classList.toggle("active");
+      });
+      // Karanlık mod durumunu kontrol et ve uygula
+      const darkMode = localStorage.getItem("darkMode");
+      if (darkMode === "enabled") {
+        body.classList.add("dark-mode");
+        darkModeToggle.textContent = "☀️";
+      } else {
+        darkModeToggle.textContent = "🌙";
+      }
+      // Karanlık mod geçişi
+      darkModeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+        const isDarkMode = body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
+        darkModeToggle.textContent = isDarkMode ? "☀️" : "🌙";
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

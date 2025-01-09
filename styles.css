@@ -1,0 +1,556 @@
+/* Arkaplan video stili */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+
+}
+#overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 0;
+  min-height: auto;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* İçerik üstte hizalandı */
+}
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  margin-bottom: 10px; /* Çok az boşluk bırakıldı */
+  z-index: 1;
+}
+
+#framework-section {
+  margin-top: 0; /* Üst boşluk tamamen kaldırıldı */
+  padding-top: 0;
+}
+/* Hamburger Menü */
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  z-index: 1001;
+}
+
+.hamburger div {
+  background-color: #fff;
+  height: 3px;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+/* Aydınlık Mod */
+body {
+  background-color: #FFFFFF;
+  color: #343A40;
+}
+
+.menu {
+  background-color: #F8F9FA;
+  color: #343A40;
+}
+
+.menu a {
+  color: #007BFF;
+}
+
+.menu a:hover {
+  color: #0056B3;
+}
+
+/* Karanlık Mod */
+body.dark-mode {
+  background-color: #121212;
+  color: #282bda;
+}
+
+.menu.dark-mode {
+  background-color: #1E1E1E;
+  color: #ffffff;
+}
+
+.menu.dark-mode a {
+  color: #4FC3F7;
+}
+
+.menu.dark-mode a:hover {
+  color: #29B6F6;
+}
+
+.menu {
+  display: none;
+  flex-direction: column;
+  padding: 1rem;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  border: 1px solid #ddd;
+  z-index: 1001;
+}
+
+.menu.active {
+  display: flex;
+}
+.menu-toggle {
+  z-index: 1001; /* Menü düğmesi de üstte olmalı */
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+menu li {
+  margin: 10px 0;
+}
+
+.menu li a {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.menu li a:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+
+
+/* Framework Kartları */
+#framework-container .card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#framework-container .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#framework-container .btn-primary {
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+}
+
+#framework-container .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Genel Kart Stilleri */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Kartın genişliği sabit */
+  height: 300px; /* Kartın yüksekliği sabit */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card .btn-primary {
+  background-color: #007BFF;
+  color: white;
+}
+
+.card .btn-primary:hover {
+  background-color: #0056b3;
+}
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff; 
+}
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p {
+  color: #eae4e4; /* Başlıklar ve paragraflar için açık renk */
+}
+
+.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+#dark-mode-toggle {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dark-mode a {
+  color: #bb86fc;
+}
+.dark-mode a:hover {
+  color: #ffffff; /* Link üzerine gelindiğinde beyaz */
+}
+.dark-mode .menu a {
+  color: #ffffff; /* Menü linkleri */
+}
+.dark-mode .menu a:hover {
+  color: #bb86fc; /* Menü linki üzerine gelindiğinde */
+}
+
+/* Tüm sayfa için arka plan ve yazı rengi */
+.hakkinda-page.dark-mode {
+  background-color: #121212; /* Arka plan rengini koyu yap */
+  color: #ffffff; /* Yazı rengini açık yap */
+}
+
+/* "Ben Kimim?" Bölümü */
+.hakkinda-page.dark-mode .about-section {
+  background-color: #1a1a1a; /* Arka plan koyu */
+  color: #ffffff; /* Yazılar açık renk */
+}
+
+.hakkinda-page.dark-mode .about-section h2 {
+  color: #5061c0; /* Başlık rengi sarı */
+}
+
+/* Mobil Uygulama Geliştirme Adımları */
+.hakkinda-page.dark-mode .steps-section {
+  background-color: #1a1a1a; /* Arka plan koyu */
+  color: #ffffff; /* Yazılar açık renk */
+}
+
+.hakkinda-page.dark-mode .steps-section ol li {
+  color: #ffffff; /* Liste elemanları açık renk */
+}
+
+/* Eğitim Videoları Bölümü */
+.hakkinda-page.dark-mode #video-egitim {
+  background-color: #1a1a1a; /* Arka plan koyu */
+  color: #ffffff; /* Yazılar açık renk */
+}
+
+.hakkinda-page.dark-mode #video-egitim h2 {
+  color: hsl(259, 35%, 62%); /* Başlık rengi sarı */
+}
+
+/* Araçlar ve Teknolojiler Bölümü */
+.hakkinda-page.dark-mode .card {
+  background-color: #1e1e1e; /* Kartların arka planı */
+  color: #ffffff; /* Yazılar açık renk */
+  border: 1px solid #444; /* Kart kenar rengi */
+}
+
+.hakkinda-page.dark-mode .card h5 {
+  color: #5462b1; /* Kart başlığı sarı */
+}
+
+.hakkinda-page.dark-mode .card .btn-primary {
+  background-color: #e3dbd8; /* Buton arka plan rengi */
+  color: #5462b1; /* Buton yazı rengi */
+}
+
+.hakkinda-page.dark-mode .card .btn-primary:hover {
+  background-color: #f0edec; /* Buton hover rengi */
+}
+/* Mobil Uygulama Nasıl Geliştirilir? Başlığı İçin Özel Stil */
+.hakkinda-page.dark-mode .steps-section h2 {
+  color: #5462b1; 
+}
+.dark-mode .contact-section h2, 
+.dark-mode .contact-section label {
+  color: #190e94; /* Karanlık modda beyaz renk */
+}
+/* Tooltip Konteyneri */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Tooltip Metni */
+.tooltip-text {
+  visibility: hidden;
+  width: 160px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 0;
+
+  /* Tooltip'in pozisyonu */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Yukarıda görünmesi için */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip Gösteren Ok */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Tooltip'in altına ok ekler */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Hover Durumunda Tooltip Gösterimi */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Genel Margin ve Padding Optimizasyonu */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Yatay kaydırmayı engeller */
+}
+
+section {
+  padding: 20px 0; /* Bölüm boşlukları optimize edildi */
+  margin: 0; /* Tüm kenarlardaki boşlukları kaldırın */
+}
+
+header, footer {
+  padding: 10px 20px; /* Başlık ve altbilgi boşlukları düzenlendi */
+}
+.card {
+  border-radius: 15px;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.card img {
+  border-radius: 8px;
+  width: 100%;
+  max-height: 100px;
+  height: auto;
+  object-fit: contain; /* Görselleri karta düzgün sığdırır */
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  text-align: justify;
+  margin-top: 15px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card a {
+  display: inline-block;
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.card-content h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card-content .btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.card-content .btn:hover {
+  background-color: #0056b3;
+}
+.featured-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1; /* İçerik alanını büyüt */
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  background-color: #343a40;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  z-index: 2;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.menu-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#dark-mode-toggle:hover {
+  background-color: #0056B3;
+}
+.menu-mod {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Sağ Bölge (Logo) */
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Sağ tarafa hizalama */
+  margin-left: auto; /* Logoyu en sağa iter */
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+  width: 100%;
+}
+.carousel-inner img {
+  max-height: 500px; /* Slider'ın yüksekliğini sınırlandırır */
+  object-fit: cover; /* Görsellerin düzgün kırpılmasını sağlar */
+}
+.modal {
+  z-index: 1055; /* Varsayılan olarak üst katmanda */
+}
+.modal-backdrop {
+  z-index: 1050; /* Arka plan için */
+}
+#overlay {
+  z-index: 1; /* Modalın altında kalmasını sağlar */
+}
+.zoom-container {
+  overflow: hidden; /* Görselin dışa taşmasını engeller */
+  display: inline-block;
+  position: relative;
+}
+
+.zoom-container img {
+  transition: transform 0.3s ease; /* Geçiş efekti */
+  display: block;
+  width: 100%; /* Görselin tamamen görünmesi için */
+}
+
+.zoom-container:hover img {
+  transform: scale(1.2); /* Yakınlaştırma miktarı */
+}
+.banner {
+  text-align: center;
+  padding: 50px 20px;
+  background: url('images/banner.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}

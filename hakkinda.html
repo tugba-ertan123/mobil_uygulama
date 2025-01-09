@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakkında</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    .hamburger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      z-index: 1001; /* Menü düğmesi her şeyin üstünde */
+    }
+    .hamburger div {
+      background-color: #fff;
+      height: 4px;
+      width: 100%;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+      background-color: #f8f9fa;
+      padding: 1rem;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      border: 1px solid #ddd;
+      z-index: 1000; /* Menü üstte */
+    }
+    .menu.active {
+      display: flex; 
+    }
+    .about-section {
+      padding: 40px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .steps-section {
+      padding: 40px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+    .steps-section ol {
+      margin-left: 20px;
+    }
+    .steps-section li {
+      margin-bottom: 10px;
+    }
+    #video-egitim {
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .video-container {
+      display: flex;
+      justify-content: center;
+      gap: 150px;
+    }
+    iframe {
+      width: 40%;
+      height: 300px;
+    }
+  </style>
+</head>
+<body class="hakkinda-page">
+  <header class="bg-dark text-white py-4">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="menu-mod">
+          <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <button id="dark-mode-toggle">🌙</button>
+        </div>
+      </div>
+      <h1 class="header-title">Hakkında</h1>
+      <div class="header-right">
+        <img src="logo.png" alt="Mobil Uygulama Geliştirme Logo" class="logo">
+      </div>
+    </div>
+  </header>
+  <nav>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Anasayfa</a></li>
+      <li><a href="hakkinda.html" class="active">Hakkında</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+  </nav>  
+  </header>
+  <main class="container mt-5">
+    <section class="about-section">
+      <h2>Ben Kimim?</h2>
+      <p>Merhaba! Ben Tuğba ERTAN, bir mobil uygulama geliştiricisiyim. Teknolojiye olan ilgim ve problem çözme becerimle, insanların hayatını kolaylaştıran yazılımlar geliştirmeyi hedefliyorum. Mobil uygulama geliştirme üzerine çalışıyor, aynı zamanda bu alanda içerik üretiyorum.</p>
+      <p>Hedefim, kullanıcı dostu ve yenilikçi uygulamalar geliştirerek, dijital dünyada fark yaratmak. Eğer benimle iletişime geçmek isterseniz, iletişim sayfasını ziyaret edebilirsiniz!</p>
+    </section>
+    
+    <section class="steps-section">
+      <h2>Mobil Uygulama Nasıl Geliştirilir?</h2>
+      <ol>
+        <li><strong>Fikir Belirleme:</strong> Uygulamanızın amacını ve hedef kitlesini belirleyin.</li>
+        <li><strong>Planlama:</strong> Gereksinimlerinizi ve tasarımı detaylıca planlayın. Wireframe ve mockup oluşturabilirsiniz.</li>
+        <li><strong>Geliştirme Ortamı Seçimi:</strong> Android için Android Studio, iOS için Xcode veya her ikisi için Flutter ya da React Native gibi platformları tercih edin.</li>
+        <li><strong>Kodlama:</strong> Tasarımı ve işlevselliği kodlayarak uygulamanızı geliştirin.</li>
+        <li><strong>Test:</strong> Uygulamanızı hatalar ve kullanıcı deneyimi açısından test edin.</li>
+        <li><strong>Yayınlama:</strong> Google Play Store ve Apple App Store gibi platformlarda uygulamanızı yayınlayın.</li>
+        <li><strong>Güncelleme ve İyileştirme:</strong> Kullanıcı geri bildirimlerine göre uygulamanızı güncel tutun.</li>
+      </ol>
+    </section>
+
+    <section id="video-egitim">
+      <h2 class="text-center mb-4">Mobil Uygulama Geliştirme Eğitim Videoları</h2>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/videoseries?list=PLkEKekZD_TOskPIb0Wm1dGi4qXx7QgkW3" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+        <iframe 
+          src="https://www.youtube.com/embed/videoseries?list=PL6BigWlyDofvSsDaFxIUZK1jMOZDLg4qM" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <section class="steps-section">
+      <h2>Araçlar ve Teknolojiler</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Flutter</h5>
+              <p class="card-text">Google tarafından geliştirilen modern UI framework.</p>
+              <a href="https://flutter.dev" class="btn btn-primary">Daha Fazla</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">React Native</h5>
+              <p class="card-text">Facebook tarafından geliştirilen mobil uygulama framework.</p>
+              <a href="https://reactnative.dev" class="btn btn-primary">Daha Fazla</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Swift</h5>
+              <p class="card-text">Apple'ın güçlü programlama dili.</p>
+              <a href="https://developer.apple.com/swift/" class="btn btn-primary">Daha Fazla</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Xcode</h5>
+              <p class="card-text">Apple'ın iOS ve macOS uygulamaları geliştirmek için sunduğu IDE.</p>
+              <a href="https://developer.apple.com/xcode/" class="btn btn-primary">Daha Fazla</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>© 2024 Mobil Uygulama Geliştirme. Tüm Hakları Saklıdır.</p>
+    <p>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </p>  
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("hamburger");
+      const menu = document.getElementById("menu");
+
+      menuToggle.addEventListener("click", function () {
+        menu.classList.toggle("active");
+      });
+      
+      const darkModeToggle = document.getElementById("dark-mode-toggle");
+      const body = document.body;
+      const darkMode = localStorage.getItem("darkMode");
+
+      if (darkMode === "enabled") {
+        body.classList.add("dark-mode");
+        darkModeToggle.textContent = "☀️";
+      } else {
+        darkModeToggle.textContent = "🌙";
+      }
+
+      darkModeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+        const isDarkMode = body.classList.contains("dark-mode");
+
+        if (isDarkMode) {
+          localStorage.setItem("darkMode", "enabled");
+          darkModeToggle.textContent = "☀️";
+        } else {
+          localStorage.setItem("darkMode", "disabled");
+          darkModeToggle.textContent = "🌙";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

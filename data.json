@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Mobil Uygulama Geliştirmenin Temelleri",
+    "content": "Mobil uygulama geliştirmek, modern dünyada yazılımın temel bir parçasıdır.",
+    "links": [
+      {
+        "category": "tools",
+        "title": "Flutter",
+        "content": "Google tarafından geliştirilen modern UI framework.",
+        "url": "https://flutter.dev"
+      },
+      {
+        "category": "tools",
+        "title": "React Native",
+        "content": "Facebook tarafından geliştirilen mobil uygulama framework.",
+        "url": "https://reactnative.dev"
+      },
+      {
+        "category": "tools",
+        "title": "Swift",
+        "content": "Apple'ın güçlü programlama dili.",
+        "url": "https://developer.apple.com/swift/"
+      },
+      {
+        "category": "tools",
+        "title": "Xcode",
+        "content": "Apple'ın geliştirici araç seti.",
+        "url": "https://developer.apple.com/xcode/"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Mobil Geliştirmenin Geleceği",
+    "content": "Mobil uygulama geliştirme dünyasında yapay zeka, artırılmış gerçeklik ve diğer yenilikçi teknolojiler büyük bir dönüşüm yaratıyor. Yeni nesil araçlar sayesinde geliştiriciler, kullanıcı odaklı ve yüksek performanslı uygulamalar yaratmak için daha fazla seçeneğe sahip. Mobil cihazların kullanımının artmasıyla, bu teknolojiler hayatımızın her alanında önemli bir rol oynamaya başladı.",
+    "image": "images/gelecek.jpg",
+    "link": "blog.html?post=1"
+  },
+  {
+    "id": 2,
+    "title": "Performans İpuçları",
+    "content": "Performansı artırmak için bellek yönetimi, optimize edilmiş ağ istekleri ve doğru veri yapıları gibi tekniklere odaklanmak gerekiyor. Mobil uygulamalarda kullanıcı deneyimini geliştirmek için ayrıca UI optimizasyonlarına dikkat edilmesi çok önemli. Hızlı yükleme süreleri, verimli animasyonlar ve sorunsuz gezinti kullanıcı memnuniyetini artırır.",
+    "image": "images/ipuclari.jpg",
+    "link": "blog.html?post=2"
+  },
+  {
+    "id": 3,
+    "title": "Kariyer Tavsiyeleri",
+    "content": "Mobil geliştirici olarak kariyerinizde başarılı olmak için yeni teknolojileri takip edin, açık kaynak projelere katkıda bulunun ve profesyonel ağınızı genişletin. Sürekli öğrenme bu alanda başarının anahtarıdır. Mobil geliştirme dünyası sürekli olarak değişiyor, bu yüzden güncel kalmak önemlidir.",
+    "image": "images/kariyer.jpg",
+    "link": "blog.html?post=3"
+  }
+]

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    .hamburger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      z-index: 1001; /* Menü düğmesi her şeyin üstünde */
+    }
+    .hamburger div {
+      background-color: #000;
+      height: 4px;
+      width: 100%;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+      background-color: #f8f9fa;
+      padding: 1rem;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      border: 1px solid #ddd;
+      z-index: 1000; /* Menü üstte */
+    }
+    .menu.active {
+      display: flex; 
+    }
+    /* Kart Stil Ayarları */
+    .card {
+      border-radius: 15px;
+      background-color: #f8f9fa;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin: auto;
+      max-width: 600px; /* Kart genişliği daha dar */
+      margin-bottom: 20px;
+      text-align: center; /* İçeriği ortala */
+    }
+
+    /* Başlık Ayarları */
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #343a40;
+    }
+
+    /* Görsel Ayarları */
+    .card img {
+      border-radius: 10px;
+      width: 80%; /* Görsel genişliği kartın %80'i kadar */
+      max-height: 150px; /* Maksimum görsel yüksekliği */
+      height: auto; /* Oranı koruyarak boyutlandır */
+      object-fit: contain; /* Görselleri tam olarak sığdır */
+      margin-bottom: 15px; /* Görsel ile metin arasında boşluk */
+    }
+
+    /* Paragraf Ayarları */
+    .card p {
+      line-height: 1.8;
+      color: #555;
+      font-size: 0.9rem; /* Yazıyı biraz daha küçük yap */
+      margin-bottom: 10px;
+    }
+
+    /* Bağlantı Ayarları */
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+    .zoom-container {
+    overflow: hidden; /* Görselin dışa taşmasını engeller */
+    display: inline-block;
+    position: relative;
+  }
+
+  .zoom-container img {
+    transition: transform 0.3s ease; /* Geçiş efekti */
+    display: block;
+    width: 100%; /* Görselin tamamen görünmesi için */
+  }
+
+  .zoom-container:hover img {
+    transform: scale(1.2); /* Yakınlaştırma miktarı */
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blog</h1>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav>
+        <ul class="menu"id="menu">
+           <li><a href="index.html">Anasayfa</a></li>
+           <li><a href="hakkinda.html">Hakkında</a></li>
+           <li><a href="blog.html">Blog</a></li>
+           <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+    <button id="dark-mode-toggle">🌙</button>
+    <img src="logo.png" alt="Mobil Uygulama Geliştirme Logo" class="logo">
+  </header>
+  <main>
+    <div id="blog-container" class="container mt-5"></div>
+  </main>
+  <footer>
+    <p>© 2024 Mobil Uygulama Geliştirme. Tüm Hakları Saklıdır.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("hamburger");
+      const menu = document.getElementById("menu");
+    
+      menuToggle.addEventListener("click", function () {
+        menu.classList.toggle("active");
+      });
+      const blogId = new URLSearchParams(window.location.search).get("post");
+      const blogContainer = document.getElementById("blog-container");
+      if (!blogId) {
+        // Eğer blog ID'si yoksa, öne çıkan blogları listele
+        fetch("data.json")
+          .then(response => {
+            if (!response.ok) {
+              throw new Error("JSON verisi yüklenemedi.");
+            }
+            return response.json();
+          })
+          .then(data => {
+            // "Mobil Uygulama Geliştirmenin Temelleri" başlığını filtrele
+            const filteredData = data.filter(
+              blog => blog.title !== "Mobil Uygulama Geliştirmenin Temelleri"
+            );
+
+            blogContainer.innerHTML = `
+              <h2>Öne Çıkan Bloglar</h2>
+              <div class="featured-container">
+                ${filteredData
+                  .map(
+                    blog => `
+                    <div class="card">
+                    <div class= "zoom-container">
+                      <img src="${blog.image}" alt="${blog.title}" class="card-image">
+                    </div>
+                      <div class="card-content">
+                        <h3>${blog.title}</h3>
+                        <p>${blog.content.substring(0, 120)}...</p>
+                        <a href="blog.html?post=${blog.id}" class="btn">Devamını Oku</a>
+                      </div>  
+                    </div>
+                   `
+                   )
+                   .join("")}
+              </div>
+            `;
+          })
+          .catch(error => {
+            console.error("Hata:", error);
+            blogContainer.innerHTML = "<p>Blog yazıları yüklenirken bir hata oluştu.</p>";
+          });
+        return;
+      }
+      
+      fetch("data.json")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("JSON verisi yüklenemedi.");
+          }
+          return response.json();
+        })
+        .then(data => {
+          const blog = data.find(b => b.id === parseInt(blogId)); // Doğru blogu bul
+
+          if (blog) {
+            blogContainer.innerHTML = `
+              <div class="card">
+                <h2 id="blog-title">${blog.title}</h2>
+                <img id="blog-image" src="${blog.image}" alt="Blog Resmi">
+                <p id="blog-content">${blog.content}</p>
+              </div>
+            `;
+          } else {
+            blogContainer.innerHTML = "<p>Blog bulunamadı.</p>";
+          }
+        })
+        .catch(error => {
+          console.error("Hata:", error);
+          blogContainer.innerHTML = "<p>Blog yüklenirken bir hata oluştu.</p>";
+        });
+    });
+  </script>
+</body>
+</html>
